@@ -36,9 +36,6 @@ xfer_*.xml
 Thumbs.db
 Procfile
 
-# bin/
-bin/*
-
 # config/
 config/apache
 config/cockpit
