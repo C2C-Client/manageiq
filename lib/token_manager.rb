@@ -9,7 +9,7 @@ class TokenManager
 
   def initialize(namespace = DEFAULT_NS, options = {})
     @namespace = namespace
-    @options = {:token_ttl => -> { 10.minutes }}.merge(options)
+    @options = {:token_ttl => -> { 30.minutes }}.merge(options)
   end
 
   def gen_token(token_options = {})

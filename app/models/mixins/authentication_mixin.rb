@@ -38,8 +38,9 @@ module AuthenticationMixin
         :zone        => zone
       }
 
+      # C2C Provider: Modified time for timed out bug while validation of provider
       task_id = MiqTask.generic_action_with_callback(task_opts, queue_opts)
-      task = MiqTask.wait_for_taskid(task_id, :timeout => 30)
+      task = MiqTask.wait_for_taskid(task_id, :timeout => 600)
 
       if task.nil?
         error_message = "Task Error"

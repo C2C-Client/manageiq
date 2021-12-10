@@ -22,7 +22,14 @@ def manageiq_plugin(plugin_name)
   end
 end
 
-manageiq_plugin "manageiq-schema"
+def c2c_manageiq_plugin(plugin_name, branch_name)
+  unless dependencies.detect { |d| d.name == plugin_name }
+    gem plugin_name, :git => "https://github.com/C2C-Client/#{plugin_name}", :branch => branch_name
+  end
+end
+
+
+c2c_manageiq_plugin "manageiq-schema","ivanchuk-2"
 
 # Unmodified gems
 gem "activerecord-virtual_attributes", "~>1.4.0"
@@ -92,9 +99,12 @@ gem "american_date"
 # This default is used to automatically require all of our gems in processes that don't specify which bundler groups they want.
 #
 ### providers
+group :telefonica, :manageiq_default do
+  c2c_manageiq_plugin "manageiq-providers-telefonica", "ivanchuk-2"
+end
 group :amazon, :manageiq_default do
   manageiq_plugin "manageiq-providers-amazon"
-  gem "amazon_ssa_support",                          :require => false, :git => "https://github.com/ManageIQ/amazon_ssa_support.git", :tag => "ivanchuk-2" # Temporary dependency to be moved to manageiq-providers-amazon when officially release
+  gem "amazon_ssa_support", :require => false, :git => "https://github.com/ManageIQ/amazon_ssa_support.git", :tag => "ivanchuk-2" # Temporary dependency to be moved to manageiq-providers-amazon when officially release
 end
 
 group :ansible_tower, :manageiq_default do
@@ -211,8 +221,8 @@ group :consumption, :manageiq_default do
 end
 
 group :ui_dependencies do # Added to Bundler.require in config/application.rb
-  manageiq_plugin "manageiq-decorators"
-  manageiq_plugin "manageiq-ui-classic"
+c2c_manageiq_plugin "manageiq-decorators", "ivanchuk-2"
+c2c_manageiq_plugin "manageiq-ui-classic","ivanchuk-2"
   # Modified gems (forked on Github)
   gem "jquery-rjs",                   "=0.1.1",                       :git => "https://github.com/ManageIQ/jquery-rjs.git", :tag => "v0.1.1-1"
 end

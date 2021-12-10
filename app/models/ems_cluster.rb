@@ -317,6 +317,7 @@ class EmsCluster < ApplicationRecord
   end
 
   cache_with_timeout(:node_types) do
+
     if !openstack_clusters_exists?
       :non_openstack
     elsif non_openstack_clusters_exists?

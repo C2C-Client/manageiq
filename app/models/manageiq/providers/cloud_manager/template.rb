@@ -14,6 +14,7 @@ class ManageIQ::Providers::CloudManager::Template < ::MiqTemplate
   def self.eligible_for_provisioning
     super.where(:type => %w(ManageIQ::Providers::Amazon::CloudManager::Template
                             ManageIQ::Providers::Openstack::CloudManager::Template
+                            ManageIQ::Providers::Telefonica::CloudManager::Template
                             ManageIQ::Providers::Azure::CloudManager::Template
                             ManageIQ::Providers::Google::CloudManager::Template
                             ManageIQ::Providers::Openstack::CloudManager::VolumeTemplate

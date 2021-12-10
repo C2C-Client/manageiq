@@ -176,6 +176,7 @@ class ChargebackVm < Chargeback
           tenant = Tenant.find_by(:id => @options[:tenant_id])
           if tenant.nil?
             error_message = "Unable to find tenant '#{@options[:tenant_id]}'"
+            # C2C Provider : Modified code for rspec
             _log.info("#{error_message}. Calculating chargeback costs skipped for #{@options[:tenant_id]} in region #{region}.")
             return Vm.none
           end
@@ -184,6 +185,7 @@ class ChargebackVm < Chargeback
           tenant = Tenant.in_region(region).find_by(:name => tenant.name)
           if tenant.nil?
             error_message = "Unable to find tenant '#{tenant_name}' (based on tenant id '#{@options[:tenant_id]}' from default region) in region #{region}"
+            # C2C Provider : Modified code for rspec
             _log.info("#{error_message}. Calculating chargeback costs skipped for #{@options[:tenant_id]} in region #{region}.")
             return Vm.none
           end

@@ -48,6 +48,7 @@ class VmOrTemplate < ApplicationRecord
     "amazon"      => "Amazon",
     "redhat"      => "RedHat",
     "openstack"   => "OpenStack",
+    "telefonica"  => "Telefonica",
     "google"      => "Google",
     "kubevirt"    => "KubeVirt",
     "unknown"     => "Unknown"

@@ -1381,6 +1381,12 @@ class Host < ApplicationRecord
               task.update_status("Active", "Ok", "Refreshing OpenStack Services") if task
               Benchmark.realtime_block(:refresh_openstack_services) { refresh_openstack_services(ssu) }
             end
+            #C2C Provider: refresh_telefonica_services should run after refresh_services and refresh_fs_files
+            if respond_to?(:refresh_telefonica_services)
+              _log.info("Refreshing Telefonica Services for #{log_target}")
+              task.update_status("Active", "Ok", "Refreshing Telefonica Services") if task
+              Benchmark.realtime_block(:refresh_telefonica_services) { refresh_telefonica_services(ssu) }
+            end
 
             save
           end

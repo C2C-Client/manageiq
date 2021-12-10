@@ -121,4 +121,5 @@ class PhysicalServer < ApplicationRecord
     filter = asset_detail.attributes.slice(*FirmwareTarget::MATCH_ATTRIBUTES).transform_values(&:downcase)
     firmware_binary.firmware_targets.find_by(filter).present?
   end
+
 end

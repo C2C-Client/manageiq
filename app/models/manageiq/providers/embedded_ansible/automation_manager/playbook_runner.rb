@@ -131,10 +131,10 @@ class ManageIQ::Providers::EmbeddedAnsible::AutomationManager::PlaybookRunner < 
     {
       :initializing                  => {'initialize'       => 'waiting_to_start'},
       :start                         => {'waiting_to_start' => 'running'},
-      :create_job_template           => {'running' => 'job_template'},
+      :create_job_template           => {'running'          => 'job_template'},
       :launch_ansible_tower_job      => {'job_template'     => 'ansible_job'},
       :poll_ansible_tower_job_status => {'ansible_job'      => 'ansible_job'},
-      :post_ansible_run              => {'job_template' => 'ansible_done', 'ansible_job' => 'ansible_done'},
+      :post_ansible_run              => {'job_template'     => 'ansible_done', 'ansible_job' => 'ansible_done'},
       :finish                        => {'*'                => 'finished'},
       :abort_job                     => {'*'                => 'aborting'},
       :cancel                        => {'*'                => 'canceling'},

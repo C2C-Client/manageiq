@@ -201,7 +201,6 @@ module Rbac
       # results are returned in the same format as the targets. for empty targets, the default result format is a list of ids.
       targets           = options[:targets]
       scope             = options[:named_scope]
-
       klass             = to_class(options[:class])
       conditions        = options[:conditions]
       where_clause      = options[:where_clause]
