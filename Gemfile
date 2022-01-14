@@ -100,6 +100,7 @@ gem "american_date"
 
 group :telefonica, :manageiq_default do
   c2c_manageiq_plugin "manageiq-providers-telefonica", "master"
+  c2c_manageiq_plugin "fog-telefonica", "master"
 end
 group :amazon, :manageiq_default do
   manageiq_plugin "manageiq-providers-amazon"
